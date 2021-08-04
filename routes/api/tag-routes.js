@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbProductData => res.json(dbProductData))
+    .then(dbTagData => res.json(dbTagData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -32,6 +32,9 @@ router.get('/:id', (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
   Tag.findOne({
+    where: {
+      id: req.params.id
+    },
     attributes: ['id', 'tag_name'],
     include: [
       {
@@ -46,7 +49,7 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(dbProductData => res.json(dbProductData))
+    .then(dbTagData => res.json(dbTagData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -59,7 +62,7 @@ router.post('/', (req, res) => {
     id: req.body.id,
     tag_name: req.body.tag_name
   })
-    .then(dbProductData => res.json(dbProductData))
+    .then(dbTagData => res.json(dbTagData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
