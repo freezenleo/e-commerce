@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
+const { update } = require('../../models/Product');
 
 // The `/api/tags` endpoint
 
@@ -11,14 +12,8 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Product,
-        as: 'products',
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
-        include: [
-          {
-            model: ProductTag,
-            attributes: ['id', 'product_id', 'tag_id']
-          }
-        ]
+        // as: 'products',
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       }
     ]
   })
@@ -40,14 +35,8 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-        as: 'products',
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
-        include: [
-          {
-            model: ProductTag,
-            attributes: ['id', 'product_id', 'tag_id']
-          }
-        ]
+        // as: 'products',
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       }
     ]
   })
@@ -59,12 +48,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // create a new tag
+  // create a new tag  
   Tag.create({
-    id: req.body.id,
     tag_name: req.body.tag_name
   })
-    .then(dbTagData => res.json(dbTagData))
+    .then(productIds => res.json(productIds))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -81,7 +69,7 @@ router.put('/:id', (req, res) => {
       where: {
         id: req.params.id
       }
-    }
+    },
   )
     .then(dbTagData => {
       if (!dbTagData) {
@@ -91,7 +79,6 @@ router.put('/:id', (req, res) => {
       res.json(dbTagData);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
