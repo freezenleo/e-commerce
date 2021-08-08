@@ -41,9 +41,9 @@ product_tag
 * Run npm start to start the application and you can use insomnia or postman api software to GET, POST, and DELETE products in database.
 
 Here is a walkthrough video on how to use the application:</br>
-YouTube URL: https://youtu.be/13zUYmTo8RM
+YouTube URL: https://youtu.be/i_hIGxhjVCQ
 </br>
-GoogleDrive URL: https://drive.google.com/file/d/1RNq_nKqKSH-kpzHDBWYnSGMhbVsJJbIH/view
+GoogleDrive URL: https://drive.google.com/file/d/1frtnzL62sK_56yPqLV1Q5LABztGPvcoS/view
 
 Repo URL: https://github.com/freezenleo/e-commerce
 
